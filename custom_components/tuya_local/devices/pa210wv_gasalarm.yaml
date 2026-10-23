@@ -1,0 +1,52 @@
+name: Gas alarm
+products:
+  - id: sclatjo1jqscmwwe
+    model: PA-210WV
+entities:
+  - entity: binary_sensor
+    class: gas
+    dps:
+      - id: 1
+        type: string
+        name: sensor
+        mapping:
+          - dps_val: alarm
+            value: true
+          - dps_val: normal
+            value: false
+  - entity: sensor
+    name: Gas level
+    dps:
+      - id: 2
+        type: integer
+        name: sensor
+        unit: "% LEL"
+        class: measurement
+        mapping:
+          - scale: 10
+  - entity: binary_sensor
+    class: problem
+    category: diagnostic
+    dps:
+      - id: 11
+        type: bitfield
+        name: sensor
+        mapping:
+          - dps_val: 0
+            value: false
+          - value: true
+      - id: 11
+        type: bitfield
+        name: fault_code
+  - entity: switch
+    translation_key: sound
+    category: config
+    dps:
+      - id: 16
+        type: boolean
+        name: switch
+        mapping:
+          - dps_val: true
+            value: false
+          - dps_val: false
+            value: true
