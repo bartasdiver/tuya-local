@@ -6,6 +6,9 @@ products:
   - id: gyitctrjj1kefxp2
     manufacturer: PGST
     model: "PG103/PG105/PG106/PG107/PG109"
+  - id: p9tcjpycdgh8zsvx
+    manufacturer: PGST
+    model: PG-107
 entities:
   - entity: alarm_control_panel
     dps:
@@ -21,6 +24,13 @@ entities:
             value: armed_home
           - dps_val: sos
             value: triggered
+      - id: 32
+        type: string
+        name: trigger
+        mapping:
+          - dps_val: alarm
+            value: true
+          - value: false
       - id: 36
         type: string
         name: sub_class
@@ -156,6 +166,8 @@ entities:
         name: sensor
         mapping:
           - dps_val: low_battery
+            value: true
+          - dps_val: BatteryIsLow
             value: true
           - value: false
   - entity: binary_sensor
